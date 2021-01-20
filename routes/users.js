@@ -7,7 +7,7 @@ const { createsignupToken } = require('../auth')
 
 router.post('/', async (req, res) => {
     const { error } = await userSchema.validate({
-        prodiver: req.body.prodiver,
+        provider: req.body.provider,
         email: req.body.email,
         password: req.body.password,
         password2: req.body.password2
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const password = await bcrypt.hash(req.body.password, salt)
     let newUser = {
-        prodiver: req.body.prodiver,
+        provider: req.body.provider,
         email: req.body.email,
         password,
 
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
             return res.status(400).send(`The email ${email} that you entered has already been registered, try again with a different email or login!`);
         else {
             await users().insertOne(newUser)
-            const token = createsignupToken(email, req.body.prodiver)
+            const token = createsignupToken(email, req.body.provider)
             return res.send(token)
         }
     } catch (err) {
