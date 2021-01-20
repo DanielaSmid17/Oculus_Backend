@@ -4,6 +4,7 @@ const cors = require('cors')
 const { initializeDB } = require('./db')
 const users = require('./routes/users')
 const login = require('./routes/login')
+const patients = require('./routes/patients')
 require('dotenv').config();
 
 app.use(cors())
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/users', users)
 app.use('/api/login', login)
+app.use('/api/patients', patients)
 
 initializeDB()
 

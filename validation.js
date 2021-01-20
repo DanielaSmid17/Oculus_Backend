@@ -13,5 +13,13 @@ const loginSchema = Joi.object({
     password: Joi.string().required(),
 })
 
+const patientSchema = Joi.object({
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
+    id: Joi.string().required(),
+    age: Joi.number().required(),
+    gender: Joi.string().valid("Female", "Male", "Other")
 
-module.exports = { userSchema, loginSchema }
+})
+
+module.exports = { userSchema, loginSchema, patientSchema }
