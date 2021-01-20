@@ -7,8 +7,7 @@ const { createsignupToken } = require('../auth')
 
 router.post('/', async (req, res) => {
     const { error } = await userSchema.validate({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        prodiver: req.body.prodiver,
         email: req.body.email,
         password: req.body.password,
         password2: req.body.password2
