@@ -3,13 +3,13 @@ require('dotenv').config()
 const secretTokenKey = process.env.SECRET_TOKEN_KEY
 
 
-const createsignupToken = (email, firstName, lastName) => {
-    const token = jwt.sign(JSON.stringify({ email, firstName, lastName }), secretTokenKey)
+const createsignupToken = (email, provider) => {
+    const token = jwt.sign(JSON.stringify({ email, provider }), secretTokenKey)
     return token
 }
 
-const createLoginToken = (email, id, firstName, lastName) => {
-    const token = jwt.sign(JSON.stringify({ email, id, firstName, lastName }), secretTokenKey)
+const createLoginToken = (email, id, provider) => {
+    const token = jwt.sign(JSON.stringify({ email, id, provider }), secretTokenKey)
     return token
 }
 

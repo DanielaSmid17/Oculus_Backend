@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
     if (!validPassword) {
         res.status(400).send('Password is incorrect');
     }
-    const token = createLoginToken(user.email, user._id, user.firstName, user.lastName);
+    const token = createLoginToken(user.email, user._id, user.provider);
     res.send(token)
 })
 
