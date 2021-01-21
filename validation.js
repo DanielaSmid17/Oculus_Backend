@@ -17,8 +17,9 @@ const patientSchema = Joi.object({
     lastName: Joi.string().required(),
     id: Joi.string().required(),
     age: Joi.number().required(),
-    gender: Joi.string().valid("Female", "Male", "Other")
-
+    gender: Joi.string().valid("Female", "Male", "Other"),
+    results: Joi.string().required(),
+    providerId: Joi.string().required()
 })
 
 module.exports = { userSchema, loginSchema, patientSchema }
