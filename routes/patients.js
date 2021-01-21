@@ -15,11 +15,11 @@ router.post('/', async (req, res) => {
     res.send(`Details of  ${req.body.firstName} ${req.body.lastName} have been uploaded to the system successfully`)
 })
 
-router.get('/:id', async (req, res) => {
-    const { id } = req.params
-    const userIdInDB = await patients().findMany().toArray();
-    console.log(userIdInDB);
-    res.send(userIdInDB)
+router.get('/:providerId', async (req, res) => {
+    const { providerId } = req.params
+    const patientsInDB = await patients().find({ providerId }).toArray();
+    console.log(patientsInDB);
+    res.send(patientsInDB)
 
 })
 
